@@ -1,3 +1,11 @@
+function getTimeString(unixEpochString) {
+   zeroPadded = (number) => { return number.toString().padStart(2, "0"); };
+   
+   d = new Date(+unixEpochString * 1000);
+   
+   return zeroPadded(d.getHours()) + ":" + zeroPadded(d.getMinutes()) + ":" + zeroPadded(d.getSeconds);
+}
+
 setInterval( ()  => {
    document.title = "StromMonitor 0.1";
    
@@ -5,12 +13,12 @@ setInterval( ()  => {
       d = x.trimEnd().split(" ");
       da = new Date(+d[1] * 1000);
       
-      document.body.innerHTML = "<p>Pulse ID: " + d[0] + 
-         "; Zeit: " + da.getHours() + ":" + da.getMinutes() + ":" + da.getSeconds() + 
-         " Uhr; Pulse Länge: " + d[2] + 
-         " ms; Pulse Intervall: " + d[3] + 
-         " ms; Trigger Delta: " + d[4] + 
-         " V; Max Pulse Volts: " + d[5] + 
-         " V; Verbrauch: "  + (3600000 / +d[3]).toFixed(1) + " kWh</p>" + document.body.innerHTML; 
+      document.body.innerHTML = "<p>Pulse ID: " + d[0].padStart(8) + 
+         "; Zeit: " + getTimeString(d[1]) + 
+         " Uhr; Pulse Länge: " + d[2].padStart(5) + 
+         " ms; Pulse Intervall: " + d[3].padStart(8) + 
+         " ms; Trigger Delta: " + d[4].padStart(6) + 
+         " V; Max Pulse Volts: " + d[5].padStart(6) + 
+         " V; Verbrauch: "  + (3600000 / +d[3]).toFixed(1).padStart(10) + " kWh</p>" + document.body.innerHTML; 
    });
 }, 5000);
