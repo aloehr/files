@@ -1,7 +1,7 @@
 function getTimeString(unixEpochString) {
-   zeroPadded = (number) => { return number.toString().padStart(2, "0"); };
+   var zeroPadded = (number) => { return number.toString().padStart(2, "0"); };
    
-   d = new Date(+unixEpochString * 1000);
+   var d = new Date(+unixEpochString * 1000);
    
    return zeroPadded(d.getHours()) + ":" + zeroPadded(d.getMinutes()) + ":" + zeroPadded(d.getSeconds);
 }
@@ -10,8 +10,7 @@ setInterval( ()  => {
    document.title = "StromMonitor 0.1";
    
    fetch("http://192.168.178.2/s").then((r) => { return r.text(); }).then((x) => {
-      d = x.trimEnd().split(" ");
-      da = new Date(+d[1] * 1000);
+      var d = x.trimEnd().split(" ");
       
       document.body.innerHTML = "<p>Pulse ID: " + d[0].padStart(8) + 
          "; Zeit: " + getTimeString(d[1]) + 
