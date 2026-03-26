@@ -11,6 +11,6 @@ setInterval( ()  => {
          " ms; Pulse Intervall: " + d[3] + 
          " ms; Trigger Delta: " + d[4] + 
          " V; Max Pulse Volts: " + d[5] + 
-         " V; Verbrauch: "  + (3600000 / +d[3]) + " kWh</p>" + document.body.innerHTML; 
+         " V; Verbrauch: "  + (3600000 / +d[3]).toFixed(1) + " kWh</p>" + document.body.innerHTML; 
    });
 }, 5000);
