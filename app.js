@@ -3,7 +3,7 @@ function getTimeString(unixEpochString) {
    
    var d = new Date(+unixEpochString * 1000);
    
-   return zeroPadded(d.getHours()) + ":" + zeroPadded(d.getMinutes()) + ":" + zeroPadded(d.getSeconds);
+   return zeroPadded(d.getHours()) + ":" + zeroPadded(d.getMinutes()) + ":" + zeroPadded(d.getSeconds());
 }
 
 setInterval( ()  => {
